@@ -7,6 +7,7 @@ The software is provided "as is", without warranty of any kind, express or impli
 */
 
 using System;
+using System.IO;
 using System.Xml.Linq;
 using System.Diagnostics;
 
@@ -15,6 +16,10 @@ static class Program
     static void Main()
     {
         Stopwatch sw = Stopwatch.StartNew();
+
+        string outputDir = @"C:\Code\WaveFunctionCollapse\output";
+        if (!Directory.Exists(outputDir))
+            Directory.CreateDirectory(outputDir);
 
         Random random = new Random();
         XDocument xdoc = XDocument.Load("samples.xml");
@@ -60,7 +65,7 @@ static class Program
                     if (success)
                     {
                         Console.WriteLine("DONE");
-                        model.Graphics().Save($"{name} {seed}.png");
+                        model.Graphics().Save(Path.Combine(outputDir, $"{name} {seed}.png"));
                         if (model is SimpleTiledModel stmodel && xelem.Get("textOutput", false)) System.IO.File.WriteAllText($"{name} {seed}.txt", stmodel.TextOutput());
                         break;
                     }
@@ -69,6 +74,6 @@ static class Program
             }
         }
 
-        Console.WriteLine($"time = {sw.ElapsedMilliseconds}");
+        Console.WriteLine($"time = {sw.ElapsedMilliseconds}ms");
     }
 }

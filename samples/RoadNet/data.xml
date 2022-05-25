@@ -1,0 +1,33 @@
+<set size="9">
+  <tiles>
+    <tile name="empty" symmetry="X"/>
+    <tile name="road" symmetry="I"/>
+    <tile name="road-T" symmetry="T"/>
+    <tile name="road-+" symmetry="X"/>
+    <tile name="house-front"/>
+    <!-- <tile name="house-back"/> -->
+  </tiles>
+  <neighbors>
+    <neighbor left="empty" right="empty" weight="10.0"/>
+    
+    <neighbor left="road 0" right="road 0"/>
+    <neighbor left="road 1" right="road 1"/>
+    <neighbor left="road 1" right="empty"/>
+
+    <neighbor left="road-T 0" right="road 0"/>
+    <neighbor left="road-T 1" right="empty"/>
+    <neighbor left="road-T 2" right="road 0"/>
+    <neighbor left="road-T 3" right="road 0"/>
+    
+    <neighbor left="road-+" right="road 0"/>
+
+    <neighbor left="house-front 0" right="empty"/>
+    <neighbor left="house-front 1" right="empty"/>
+    <neighbor left="house-front 2" right="empty"/>
+    <!-- <neighbor left="house-front 3" right="house-back 1"/>
+    
+    <neighbor left="house-back 0" right="empty"/>
+    <neighbor left="house-back 2" right="empty"/>
+    <neighbor left="house-back 3" right="empty"/> -->
+  </neighbors>
+</set>
